@@ -2,23 +2,25 @@ public class SinglyLinkedList {
 
     private Node head;
 
-    public SinglyLinkedList() {}
+    public SinglyLinkedList() {
+    }
 
-    public  SinglyLinkedList(Node head) {
+    public SinglyLinkedList(Node head) {
         this.head = head;
     }
 
     private static class Node {
         private final int data;
         private Node next;
+
         public Node(int data) {
             this.data = data;
             this.next = null;
         }
     }
 
-    private int length() {
-        Node current = this.head;
+    public int length() {
+        Node current = head;
         int count = 0;
         while(current != null) {
             current = current.next;
@@ -27,8 +29,8 @@ public class SinglyLinkedList {
         return count;
     }
 
-    private void display() {
-        Node current = this.head;
+    public void display() {
+        Node current = head;
         while (current != null) {
             System.out.print(current.data + "->");
             current = current.next;
@@ -36,43 +38,55 @@ public class SinglyLinkedList {
         System.out.println("null");
     }
 
-    private void insertFirst(int value) {
+    public void insertFirst(int value) {
         Node node = new Node(value);
         node.next = head;
         head = node;
     }
 
-    private void insert(int postion, int value) {
-        Node node = new Node(value);
-        if (postion == 1) {
-            node.next = this.head;
-            this.head = node;
-        } else {
-            Node previous = this.head;
-            int count = 1;
-            while(count < postion - 1) {
-                previous = previous.next;
-                count += 1;
-            }
-            node.next = previous.next;
-            previous.next = node;
+    public void insert(int position, int value) {
+        if (position < 1) {
+            throw new IllegalArgumentException("Position should be >= 1");
         }
+
+        Node node = new Node(value);
+
+        if (position == 1) {
+            node.next = head;
+            head = node;
+            return;
+        }
+
+        Node previous = head;
+        int count = 1;
+        while (count < position - 1 && previous != null) {
+            previous = previous.next;
+            count++;
+        }
+
+        if (previous == null) {
+            throw new IllegalArgumentException("Position exceeds the length of the list");
+        }
+
+        node.next = previous.next;
+        previous.next = node;
     }
 
-    private void insertLast(int value) {
+    public void insertLast(int value) {
         Node node = new Node(value);
-        if (this.head == null) {
-            this.head = node;
-        } else {
-            Node current = head;
-            while(current.next != null) {
-                current = current.next;
-            }
-            current.next = node;
+        if (head == null) {
+            head = node;
+            return;
         }
+
+        Node previous = head;
+        while (previous.next != null) {
+            previous = previous.next;
+        }
+        previous.next = node;
     }
 
-    private void deleteFirst() {
+    public void deleteFirst() {
         if (head != null) {
             head = head.next;
         }
@@ -81,58 +95,48 @@ public class SinglyLinkedList {
         }
     }
 
-    private void deleteLast() {
-        if (head.next != null) {
-            Node previous = null;
-            Node current = head;
-            while (current.next != null) {
-                previous = current;
-                current = current.next;
-            }
-            previous.next =  null;
-        } else {
-            head = null;
-        }
+    public void deleteLast() {
         if (head == null) {
             System.out.println("Empty LinkedList");
+            return;
         }
+        if (head.next == null) {
+            head = null;
+            System.out.println("Empty LinkedList");
+            return;
+        }
+        Node previous = head;
+        while (previous.next.next != null) {
+            previous = previous.next;
+        }
+        previous.next = null;
     }
 
-    private void delete(int postion) {
+    public void delete(int position) {
         if (head == null) {
             System.out.println("Empty LinkedList");
+            return;
         }
-        if (head.next == null && postion == 1) {
-            head = null;
-            System.out.println("Empty LinkedList");
-        }
-        if (head.next == null && postion > 1){
-            System.out.println("The delete postion exceed the length of LinkedList");
-        }
-        if (head.next != null && postion == 1) {
+        if (position == 1) {
             head = head.next;
+            return;
         }
-        if (head.next != null && postion > 1) {
-            Node previous = null;
-            Node current = head;
-            int count = 1;
-            while (count < postion && current.next != null) {
-                previous = current;
-                current = current.next;
-                count++;
-            }
-            if (count == postion) {
-                previous.next = current.next;
-            } else {
-                System.out.println("The delete postion exceed the length of LinkedList");
-            }
+
+        Node previous = head;
+        int count = 1;
+        while (count < position - 1 && previous.next != null) {
+            previous = previous.next;
+            count++;
+        }
+
+        if (previous.next == null) {
+            System.out.println("The delete position exceeds the length of LinkedList");
+        } else {
+            previous.next = previous.next.next;
         }
     }
 
-    private boolean find(int searchKey) {
-        if (head == null) {
-            return false;
-        }
+    public boolean find(int searchKey) {
         Node current = head;
         while (current != null) {
             if (current.data == searchKey) {
@@ -143,10 +147,10 @@ public class SinglyLinkedList {
         return false;
     }
 
-    private void reverse() {
+    public void reverse() {
         Node previous = null;
         Node current = head;
-        Node next = head;
+        Node next;
         while(current != null) {
             next = current.next;
             current.next = previous;
@@ -156,23 +160,23 @@ public class SinglyLinkedList {
         head = previous;
     }
 
-    private Node getNthNodeFromEnd(int n) {
+    public Node getNthNodeFromEnd(int n) {
         if (n <= 0) {
             throw new IllegalArgumentException("Invalid n: " + n);
         }
-        if (head == null) {
-            head = null;
-        }
+
         Node mainPtr = head;
         Node refPtr = head;
+
         int count = 0;
         while (count < n) {
             if (refPtr == null) {
-                throw new IllegalArgumentException("The postion " + n + " exceeds the length of SinglyLinkedList");
+                throw new IllegalArgumentException("The position " + n + " exceeds the length of SinglyLinkedList");
             }
             refPtr = refPtr.next;
             count++;
         }
+
         while(refPtr != null) {
             mainPtr = mainPtr.next;
             refPtr = refPtr.next;
@@ -180,7 +184,7 @@ public class SinglyLinkedList {
         return mainPtr;
     }
 
-    private void removeDuplicate() {
+    public void removeDuplicate() {
         Node current = head;
         while (current != null && current.next != null) {
             if (current.data == current.next.data) {
@@ -191,20 +195,20 @@ public class SinglyLinkedList {
         }
     }
 
-    private boolean containLoop() {
+    public boolean containLoop() {
         Node slowPtr = head;
-        Node fastPrt = head;
-        while (fastPrt != null && fastPrt.next != null) {
+        Node fastPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
             slowPtr = slowPtr.next;
-            fastPrt = fastPrt.next.next;
-            if (slowPtr == fastPrt) {
+            fastPtr = fastPtr.next.next;
+            if (slowPtr == fastPtr) {
                 return true;
             }
         }
         return false;
     }
 
-    private Node startNodeInALoop() {
+    public Node startNodeInALoop() {
         Node slowPtr = head;
         Node fastPtr = head;
         while (fastPtr != null && fastPtr.next != null) {
@@ -220,48 +224,39 @@ public class SinglyLinkedList {
     private Node getStartingNode(Node slowPtr) {
         Node temp = head;
         while (temp != slowPtr) {
-            temp =  temp.next;
+            temp = temp.next;
             slowPtr = slowPtr.next;
         }
         return temp;
     }
 
-    private static SinglyLinkedList createASinglyLinkedList(int[] arr) {
-
+    public static SinglyLinkedList createASinglyLinkedList(int[] arr) {
         if (arr == null) {
             throw new IllegalArgumentException("Array of values in Singly Linked List is null");
         }
-        int n = arr.length;
-        if (n == 0) {
+        if (arr.length == 0) {
             throw new IllegalArgumentException("Array of values of Singly Linked List is empty");
         }
 
-        Node[] nodes = new Node[n];
-
-        for (int i = 0; i < n; i++) {
-            Node temp = new Node(arr[i]);
-            nodes[i] = temp;
-        }
-
-        // Link all nodes to a chain
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = nodes[0];  // anchor
-        Node temp = sll.head;  // loop and connect nodes
-        for (int i = 1; i < n; i++) {
-            temp.next = nodes[i];
+        sll.head = new Node(arr[0]);
+        Node temp = sll.head;
+
+        for (int i = 1; i < arr.length; i++) {
+            temp.next = new Node(arr[i]);
             temp = temp.next;
         }
 
         return sll;
     }
 
-    private static SinglyLinkedList createALoopInLinkedList() {
+    public static SinglyLinkedList createALoopInLinkedList() {
         Node first = new Node(1);
         Node second = new Node(2);
         Node third = new Node(3);
         Node fourth = new Node(4);
-        Node fifth = new Node(4);
-        Node sixth = new Node(4);
+        Node fifth = new Node(5);
+        Node sixth = new Node(6);
 
         // Link all nodes to a chain
         SinglyLinkedList sll = new SinglyLinkedList();
@@ -276,9 +271,7 @@ public class SinglyLinkedList {
         return sll;
     }
 
-    // Given two sorted singly linked lists, merge them so that
-    // the resulting singly linked list is also sorted
-    private static Node merge(Node a, Node b) {
+    public static Node merge(Node a, Node b) {
         Node dummy = new Node(0);
         Node tail = dummy;
 
@@ -292,28 +285,20 @@ public class SinglyLinkedList {
             }
             tail = tail.next;
         }
-        if (a == null) {
-            tail.next = b;
-        }
-        if (b == null) {
-            tail.next = a;
-        }
+        tail.next = (a != null) ? a : b;
 
         return dummy.next;
     }
 
-    // Given two non-empty linked lists representing two non-negative integers
-    // The digits are stored in reverse order and each of their nodes contains a single digit
-    // Add the two numbers and return the sum as a linked list
-
-    private static Node add(Node a, Node b) {
+    public static Node add(Node a, Node b) {
         Node dummy = new Node(0);
         Node tail = dummy;
         int carry = 0;
         int value = 0;
+
         while (a != null || b != null) {
-            int x = (a != null) ? a.data: 0;
-            int y = (b != null) ? b.data: 0;
+            int x = (a != null) ? a.data : 0;
+            int y = (b != null) ? b.data : 0;
             int sum = x + y + carry;
 
             System.out.println(x + " + " + y + " + " + carry + "(carry) = " + sum % 10 + "(carry " + sum / 10 + ")");
@@ -335,11 +320,11 @@ public class SinglyLinkedList {
                 sll_tmp_b.display();
             }
         }
+
         if (carry != 0) {
-            Node temp = new Node(carry);
-            tail.next = temp;
-            tail = tail.next;
+            tail.next = new Node(carry);
         }
+
         return dummy.next;
     }
 
@@ -361,8 +346,13 @@ public class SinglyLinkedList {
         sll.display();
         System.out.println('\n');
 
-        System.out.println("----------------insert any postion-----------------------");
-        sll.insert(2, 101);
+        System.out.println("----------------insert any position-----------------------");
+        sll.insert(2, 2);
+        sll.display();
+        System.out.println('\n');
+
+        System.out.println("----------------removeDuplicate-----------------------");
+        sll.removeDuplicate();
         sll.display();
         System.out.println('\n');
 
@@ -375,81 +365,71 @@ public class SinglyLinkedList {
         sll.display();
         System.out.println('\n');
 
-        System.out.println("-----------------delete any postion----------------------");
-        sll.delete(5);
+        System.out.println("-----------------delete any position----------------------");
+        sll.delete(3);
         sll.display();
         System.out.println('\n');
 
         System.out.println("----------------reverse-----------------------");
         sll.reverse();
         sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
+        System.out.println("Length of SLL: " + sll.length());
         System.out.println('\n');
 
         System.out.println("----------------nthNodeFromTheEnd-----------------------");
         int n = 4;
         Node nthNodeFromTheEnd = sll.getNthNodeFromEnd(n);
         sll.display();
-        System.out.println("The nth element from the end of SinglyLinkedList " + nthNodeFromTheEnd.data);
+        System.out.println("The nth element from the end of SinglyLinkedList: " + nthNodeFromTheEnd.data);
         System.out.println('\n');
 
         System.out.println("------------------searchKey---------------------");
         int searchKey = 1;
         if (sll.find(searchKey)) {
-            System.out.println("Find element " + searchKey + " in SinglyLikedList");
+            System.out.println("Found element " + searchKey + " in SinglyLinkedList");
         } else {
-            System.out.println("Find no element " + searchKey + " in SinglyLinkedList");
+            System.out.println("Element " + searchKey + " not found in SinglyLinkedList");
         }
         System.out.println('\n');
-
 
         System.out.println("----------------containLoop-----------------------");
         SinglyLinkedList sllWithLoop = createALoopInLinkedList();
         if (sllWithLoop.containLoop()) {
-            System.out.println("Singly Linked List have loop");
+            System.out.println("Singly Linked List contains a loop");
         } else {
-            System.out.println("Singly Linked List have no loop");
+            System.out.println("Singly Linked List does not contain a loop");
         }
         System.out.println('\n');
 
         System.out.println("----------------startNodeInALoop-----------------------");
         Node startNodeInALoop = sllWithLoop.startNodeInALoop();
         if (startNodeInALoop != null) {
-            System.out.println("startNodeInALoop of Singly Linked List is: " + startNodeInALoop.data);
+            System.out.println("Start node in a loop of Singly Linked List is: " + startNodeInALoop.data);
         } else {
-            System.out.println("Singly Linked List have no loop");
+            System.out.println("Singly Linked List does not contain a loop");
         }
         System.out.println('\n');
 
-        System.out.println("----------------Merge two SinglyLinkedList-----------------------");
+        System.out.println("----------------Merge two SinglyLinkedLists-----------------------");
         int[] arr1 = {1, 4, 9, 11, 13};
         int[] arr2 = {3, 6, 7, 10, 1001};
         SinglyLinkedList sll_a = createASinglyLinkedList(arr1);
-        SinglyLinkedList ssl_b = createASinglyLinkedList(arr2);
-        Node a = sll_a.head;
-        Node b = ssl_b.head;
-        Node merge = merge(a, b);
-        SinglyLinkedList sll_merge = new SinglyLinkedList(merge);
-        sll_merge.display();
+        SinglyLinkedList sll_b = createASinglyLinkedList(arr2);
+        Node mergedHead = merge(sll_a.head, sll_b.head);
+        SinglyLinkedList sll_merged = new SinglyLinkedList(mergedHead);
+        sll_merged.display();
         System.out.println('\n');
 
-        System.out.println("----------------Add two SinglyLinkedList-----------------------");
+        System.out.println("----------------Add two SinglyLinkedLists-----------------------");
         int[] arr3 = {8, 5, 7, 9, 8, 4, 7};
         int[] arr4 = {3, 8, 5, 7, 9, 9};
         SinglyLinkedList sll_c = createASinglyLinkedList(arr3);
         sll_c.display();
-        SinglyLinkedList ssl_d = createASinglyLinkedList(arr4);
-        ssl_d.display();
-
-        Node c = sll_c.head;
-        Node d = ssl_d.head;
-        Node add = add(c, d);
-
-        SinglyLinkedList sll_add = new SinglyLinkedList(add);
-
-        sll_add.display();
+        SinglyLinkedList sll_d = createASinglyLinkedList(arr4);
+        sll_d.display();
+        Node addedHead = add(sll_c.head, sll_d.head);
+        SinglyLinkedList sll_added = new SinglyLinkedList(addedHead);
+        sll_added.display();
         System.out.println('\n');
-
     }
-
 }
