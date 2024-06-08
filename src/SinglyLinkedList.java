@@ -2,6 +2,12 @@ public class SinglyLinkedList {
 
     private Node head;
 
+    public SinglyLinkedList() {}
+
+    public  SinglyLinkedList(Node head) {
+        this.head = head;
+    }
+
     private static class Node {
         private final int data;
         private Node next;
@@ -220,18 +226,31 @@ public class SinglyLinkedList {
         return temp;
     }
 
-    private static SinglyLinkedList createASinglyLinkedList() {
-        Node first = new Node(1);
-        Node second = new Node(2);
-        Node third = new Node(3);
-        Node fourth = new Node(4);
+    private static SinglyLinkedList createASinglyLinkedList(int[] arr) {
+
+        if (arr == null) {
+            throw new IllegalArgumentException("Array of values in Singly Linked List is null");
+        }
+        int n = arr.length;
+        if (n == 0) {
+            throw new IllegalArgumentException("Array of values of Singly Linked List is empty");
+        }
+
+        Node[] nodes = new Node[n];
+
+        for (int i = 0; i < n; i++) {
+            Node temp = new Node(arr[i]);
+            nodes[i] = temp;
+        }
 
         // Link all nodes to a chain
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = first;
-        first.next = second;
-        second.next = third;
-        third.next = fourth;
+        sll.head = nodes[0];  // anchor
+        Node temp = sll.head;  // loop and connect nodes
+        for (int i = 1; i < n; i++) {
+            temp.next = nodes[i];
+            temp = temp.next;
+        }
 
         return sll;
     }
@@ -257,9 +276,33 @@ public class SinglyLinkedList {
         return sll;
     }
 
-    public static void main(String[] args) {
+    private static Node merge(Node a, Node b) {
+        Node dummy = new Node(0);
+        Node tail = dummy;
 
-        SinglyLinkedList sll = createASinglyLinkedList();
+        while (a != null && b != null) {
+            if (a.data < b.data) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+            tail = tail.next;
+        }
+        if (a == null) {
+            tail.next = b;
+        }
+        if (b == null) {
+            tail.next = a;
+        }
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+        SinglyLinkedList sll = createASinglyLinkedList(arr);
         System.out.println("----------------Length of SLL-----------------------");
         sll.display();
         System.out.println("Length: " + sll.length());
@@ -334,6 +377,17 @@ public class SinglyLinkedList {
             System.out.println("Singly Linked List have no loop");
         }
         System.out.println('\n');
+
+        System.out.println("----------------Merge two SinglyLinkedList-----------------------");
+        int[] arr1 = {1, 4, 9, 11, 13};
+        int[] arr2 = {3, 6, 7, 10, 1001};
+        SinglyLinkedList sll_a = createASinglyLinkedList(arr1);
+        SinglyLinkedList ssl_b = createASinglyLinkedList(arr2);
+        Node a = sll_a.head;
+        Node b = ssl_b.head;
+        Node merge = merge(a, b);
+        SinglyLinkedList sll_merge = new SinglyLinkedList(merge);
+        sll_merge.display();
 
     }
 
