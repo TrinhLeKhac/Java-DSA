@@ -185,8 +185,42 @@ public class SinglyLinkedList {
         }
     }
 
-    public static void main(String[] args) {
+    private boolean containLoop() {
+        Node slowPtr = head;
+        Node fastPrt = head;
+        while (fastPrt != null && fastPrt.next != null) {
+            slowPtr = slowPtr.next;
+            fastPrt = fastPrt.next.next;
+            if (slowPtr == fastPrt) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    private Node startNodeInALoop() {
+        Node slowPtr = head;
+        Node fastPtr = head;
+        while (fastPtr != null && fastPtr.next != null) {
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+            if (slowPtr == fastPtr) {
+                return getStartingNode(slowPtr);
+            }
+        }
+        return null;
+    }
+
+    private Node getStartingNode(Node slowPtr) {
+        Node temp = head;
+        while (temp != slowPtr) {
+            temp =  temp.next;
+            slowPtr = slowPtr.next;
+        }
+        return temp;
+    }
+
+    private static SinglyLinkedList createASinglyLinkedList() {
         Node first = new Node(1);
         Node second = new Node(2);
         Node third = new Node(3);
@@ -199,52 +233,107 @@ public class SinglyLinkedList {
         second.next = third;
         third.next = fourth;
 
-        sll.display();
-        System.out.println("Length of SLL: " + sll.length());
+        return sll;
+    }
 
-        sll.insertFirst(10);
-        sll.display();
-        System.out.println("Length of SLL: " + sll.length());
+    private static SinglyLinkedList createALoopInLinkedList() {
+        Node first = new Node(1);
+        Node second = new Node(2);
+        Node third = new Node(3);
+        Node fourth = new Node(4);
+        Node fifth = new Node(4);
+        Node sixth = new Node(4);
 
-        sll.insertLast(100);
-        sll.display();
-        System.out.println("Length of SLL: " + sll.length());
+        // Link all nodes to a chain
+        SinglyLinkedList sll = new SinglyLinkedList();
+        sll.head = first;
+        first.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = third;
 
-        sll.insert(2, 1001);
-        sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
+        return sll;
+    }
 
+    public static void main(String[] args) {
+
+        SinglyLinkedList sll = createASinglyLinkedList();
+        System.out.println("----------------Length of SLL-----------------------");
+        sll.display();
+        System.out.println("Length: " + sll.length());
+        System.out.println('\n');
+
+        System.out.println("-------------------insertFirst--------------------");
+        sll.insertFirst(0);
+        sll.display();
+        System.out.println('\n');
+
+        System.out.println("----------------insertLast-----------------------");
+        sll.insertLast(5);
+        sll.display();
+        System.out.println('\n');
+
+        System.out.println("----------------insert any postion-----------------------");
+        sll.insert(2, 101);
+        sll.display();
+        System.out.println('\n');
+
+        System.out.println("----------------deleteFirst-----------------------");
         sll.deleteFirst();
         sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
 
+        System.out.println("-----------------deleteLast----------------------");
         sll.deleteLast();
         sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
+        System.out.println('\n');
 
+        System.out.println("-----------------delete any postion----------------------");
         sll.delete(5);
         sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
+        System.out.println('\n');
 
-        sll.delete(5);
-        sll.display();
-        System.out.println("Lengh of SLL: " + sll.length());
-
-//        int searchKey = 1;
-//        if (sll.find(searchKey)) {
-//            System.out.println("Find element " + searchKey + " in SinglyLikedList");
-//        } else {
-//            System.out.println("Find no element " + searchKey + " in SinglyLinkedList");
-//        }
-
+        System.out.println("----------------reverse-----------------------");
         sll.reverse();
         sll.display();
         System.out.println("Lengh of SLL: " + sll.length());
+        System.out.println('\n');
 
+        System.out.println("----------------nthNodeFromTheEnd-----------------------");
         int n = 4;
         Node nthNodeFromTheEnd = sll.getNthNodeFromEnd(n);
         sll.display();
         System.out.println("The nth element from the end of SinglyLinkedList " + nthNodeFromTheEnd.data);
+        System.out.println('\n');
+
+        System.out.println("------------------searchKey---------------------");
+        int searchKey = 1;
+        if (sll.find(searchKey)) {
+            System.out.println("Find element " + searchKey + " in SinglyLikedList");
+        } else {
+            System.out.println("Find no element " + searchKey + " in SinglyLinkedList");
+        }
+        System.out.println('\n');
+
+
+        System.out.println("----------------containLoop-----------------------");
+        SinglyLinkedList sllWithLoop = createALoopInLinkedList();
+        if (sllWithLoop.containLoop()) {
+            System.out.println("Singly Linked List have loop");
+        } else {
+            System.out.println("Singly Linked List have no loop");
+        }
+        System.out.println('\n');
+
+        System.out.println("----------------startNodeInALoop-----------------------");
+        Node startNodeInALoop = sllWithLoop.startNodeInALoop();
+        if (startNodeInALoop != null) {
+            System.out.println("startNodeInALoop of Singly Linked List is: " + startNodeInALoop.data);
+        } else {
+            System.out.println("Singly Linked List have no loop");
+        }
+        System.out.println('\n');
 
     }
 
