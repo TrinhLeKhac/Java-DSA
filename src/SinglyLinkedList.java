@@ -276,6 +276,8 @@ public class SinglyLinkedList {
         return sll;
     }
 
+    // Given two sorted singly linked lists, merge them so that
+    // the resulting singly linked list is also sorted
     private static Node merge(Node a, Node b) {
         Node dummy = new Node(0);
         Node tail = dummy;
@@ -297,6 +299,47 @@ public class SinglyLinkedList {
             tail.next = a;
         }
 
+        return dummy.next;
+    }
+
+    // Given two non-empty linked lists representing two non-negative integers
+    // The digits are stored in reverse order and each of their nodes contains a single digit
+    // Add the two numbers and return the sum as a linked list
+
+    private static Node add(Node a, Node b) {
+        Node dummy = new Node(0);
+        Node tail = dummy;
+        int carry = 0;
+        int value = 0;
+        while (a != null || b != null) {
+            int x = (a != null) ? a.data: 0;
+            int y = (b != null) ? b.data: 0;
+            int sum = x + y + carry;
+
+            System.out.println(x + " + " + y + " + " + carry + "(carry) = " + sum % 10 + "(carry " + sum / 10 + ")");
+
+            carry = sum / 10;
+            value = sum % 10;
+            Node node = new Node(value);
+            tail.next = node;
+            tail = tail.next;
+
+            if (a != null) {  // avoid NullPointerException
+                a = a.next;
+                SinglyLinkedList sll_tmp_a = new SinglyLinkedList(a);
+                sll_tmp_a.display();
+            }
+            if (b != null) {  // avoid NullPointerException
+                b = b.next;
+                SinglyLinkedList sll_tmp_b = new SinglyLinkedList(b);
+                sll_tmp_b.display();
+            }
+        }
+        if (carry != 0) {
+            Node temp = new Node(carry);
+            tail.next = temp;
+            tail = tail.next;
+        }
         return dummy.next;
     }
 
@@ -388,6 +431,24 @@ public class SinglyLinkedList {
         Node merge = merge(a, b);
         SinglyLinkedList sll_merge = new SinglyLinkedList(merge);
         sll_merge.display();
+        System.out.println('\n');
+
+        System.out.println("----------------Add two SinglyLinkedList-----------------------");
+        int[] arr3 = {8, 5, 7, 9, 8, 4, 7};
+        int[] arr4 = {3, 8, 5, 7, 9, 9};
+        SinglyLinkedList sll_c = createASinglyLinkedList(arr3);
+        sll_c.display();
+        SinglyLinkedList ssl_d = createASinglyLinkedList(arr4);
+        ssl_d.display();
+
+        Node c = sll_c.head;
+        Node d = ssl_d.head;
+        Node add = add(c, d);
+
+        SinglyLinkedList sll_add = new SinglyLinkedList(add);
+
+        sll_add.display();
+        System.out.println('\n');
 
     }
 
