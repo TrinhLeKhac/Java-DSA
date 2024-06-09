@@ -75,7 +75,7 @@ public class DoublyLinkedList {
         length++;
     }
 
-    public Node deleteFirst() {
+    public Node removeFirst() {
         if(isEmpty()) {
             throw new NoSuchElementException("Can not delete element from empty Doubly Linked List");
         }
@@ -92,7 +92,7 @@ public class DoublyLinkedList {
         return temp;
     }
 
-    public Node deleteLast() {
+    public Node removeLast() {
         if(isEmpty()) {
             throw new NoSuchElementException("Can not delete element from empty Doubly Linked List");
         }
@@ -124,15 +124,15 @@ public class DoublyLinkedList {
         dll.displayBackward();
         System.out.println('\n');
 
-        System.out.println("----------------create deleteFirst-----------------------");
-        Node dlfNode = dll.deleteFirst();
+        System.out.println("----------------create removeFirst-----------------------");
+        Node dlfNode = dll.removeFirst();
         System.out.println("The node has been delete is: " + dlfNode.data);
         dll.displayForward();
         System.out.println("The length of DLL is: " + dll.length);
         System.out.println('\n');
 
-        System.out.println("----------------create deleteLast-----------------------");
-        Node dflNode = dll.deleteLast();
+        System.out.println("----------------create removeLast-----------------------");
+        Node dflNode = dll.removeLast();
         System.out.println("The node has been delete is: " + dflNode.data);
         dll.displayForward();
         System.out.println("The length of DLL is: " + dll.length);
