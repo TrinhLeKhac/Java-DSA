@@ -27,7 +27,7 @@ public class DoublyLinkedList {
         return this.length == 0;
     }
 
-    public int length() {
+    public int size() {
         return this.length;
     }
 
@@ -117,7 +117,7 @@ public class DoublyLinkedList {
         dll.insertLast(4);
         dll.insertLast(5);
         dll.insertLast(6);
-        System.out.println("The length of DLL is: " + dll.length);
+        System.out.println("The length of DLL is: " + dll.size());
         System.out.println("----------------displayForward-----------------------");
         dll.displayForward();
         System.out.println("----------------displayBackward-----------------------");
