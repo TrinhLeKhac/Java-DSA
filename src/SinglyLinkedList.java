@@ -35,7 +35,7 @@ public class SinglyLinkedList {
     public boolean isEmpty() {
         return this.length == 0;
     }
-    public int length() {
+    public int size() {
         return this.length;
     }
 
@@ -361,31 +361,31 @@ public class SinglyLinkedList {
         SinglyLinkedList sll = createASinglyLinkedList(arr);
         System.out.println("----------------Length of SLL-----------------------");
         sll.display();
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("-------------------insertFirst--------------------");
         sll.insertFirst(0);
         sll.display();
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------insertLast-----------------------");
         sll.insertLast(5);
         sll.display();
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------insert any position-----------------------");
         sll.insert(3, 2);
         sll.display();
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------removeDuplicate-----------------------");
         sll.removeDuplicate();
         sll.display();
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------removeFirst-----------------------");
@@ -402,27 +402,27 @@ public class SinglyLinkedList {
 //        Node v = sll.removeFirst();
 //        sll.display();
         System.out.println("Remove element: " + a.data);
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("-----------------removeLast----------------------");
         Node b = sll.removeLast();
         sll.display();
         System.out.println("Remove element: " + b.data);
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("-----------------remove element in any position----------------------");
         Node c = sll.remove(4);
         sll.display();
         System.out.println("Remove element: " + c.data);
-        System.out.println("Length: " + sll.length());
+        System.out.println("Length: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------reverse-----------------------");
         sll.reverse();
         sll.display();
-        System.out.println("Length of SLL: " + sll.length());
+        System.out.println("Length of SLL: " + sll.size());
         System.out.println('\n');
 
         System.out.println("----------------nthNodeFromTheEnd-----------------------");
@@ -474,7 +474,7 @@ public class SinglyLinkedList {
         SinglyLinkedList sll_merged = new SinglyLinkedList(mergedHead);
         System.out.print("Merged SinglyLinkedList: ");
         sll_merged.display();
-        System.out.println("Length: " + sll_merged.length());
+        System.out.println("Length: " + sll_merged.size());
         System.out.println('\n');
 
         System.out.println("----------------Add two SinglyLinkedLists-----------------------");
@@ -490,7 +490,7 @@ public class SinglyLinkedList {
         SinglyLinkedList sll_added = new SinglyLinkedList(addedHead);
         System.out.print("Added SinglyLinkedList: ");
         sll_added.display();
-        System.out.println("Length: " + sll_added.length());
+        System.out.println("Length: " + sll_added.size());
         System.out.println('\n');
     }
 }
