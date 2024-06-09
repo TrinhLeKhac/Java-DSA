@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class SinglyLinkedList {
 
     private Node head;
@@ -57,6 +59,22 @@ public class SinglyLinkedList {
         length++;
     }
 
+    public void insertLast(int value) {
+        Node node = new Node(value);
+        if(isEmpty()) {
+            head = node;
+            length++;
+            return;
+        }
+
+        Node previous = head;
+        while (previous.next != null) {
+            previous = previous.next;
+        }
+        previous.next = node;
+        length++;
+    }
+
     public void insert(int position, int value) {
         if (position < 1) {
             throw new IllegalArgumentException("Position should be >= 1");
@@ -84,73 +102,71 @@ public class SinglyLinkedList {
         length++;
     }
 
-    public void insertLast(int value) {
-        Node node = new Node(value);
-        if(isEmpty()) {
-            head = node;
-            length++;
-            return;
-        }
-
-        Node previous = head;
-        while (previous.next != null) {
-            previous = previous.next;
-        }
-        previous.next = node;
-        length++;
-    }
-
-    public void deleteFirst() {
+    public Node removeFirst() {
+        Node node = head;
         if (isEmpty()) {
             System.out.println("Empty LinkedList");
         } else {
-            head = head.next;
+            head = node.next;
             length--;
+            node.next = null;
         }
+        return node;
     }
 
-    public void delete(int position) {
-
-        if (position == 1) {
-            this.deleteFirst();
-            return;
-        }
-
-        Node previous = head;
-        int count = 1;
-        while (count < position - 1 && previous.next != null) {
-            previous = previous.next;
-            count++;
-        }
-
-        if (previous.next == null) {
-            System.out.println("The delete position exceeds the length of LinkedList");
-        } else {
-            previous.next = previous.next.next;
-            length--;
-        }
-    }
-
-    public void deleteLast() {
+    public Node removeLast() {
         if (isEmpty()) {
             System.out.println("Empty LinkedList");
-            return;
+            return head;
         }
         if (head.next == null) {
+            Node node = head;
             head = null;
             length--;
-            System.out.println("Empty LinkedList");
-            return;
+            node.next = null;
+            return node;
         }
         Node previous = head;
         while (previous.next.next != null) {
             previous = previous.next;
         }
+        Node node = previous.next;
         previous.next = null;
         length--;
+        return node;
     }
 
+    public Node remove(int position) {
 
+        if (isEmpty()) {
+            throw new NoSuchElementException("Empty LinkedList");
+        }
+        if (position < 1) {
+            throw new IllegalArgumentException("The postion need >= 1");
+        }
+        if(position == 1) {
+            Node node = head;
+            head = node.next;
+            length--;
+            node.next = null;
+            return node;
+        }
+        if (this.length < position) {
+            throw new IllegalArgumentException("The delete position exceeds the length of LinkedList");
+        }
+
+        Node previous = head;
+        int count = 1;
+        while (count < position - 1) {
+            previous = previous.next;
+            count++;
+        }
+        Node node = previous.next;
+        previous.next = node.next;
+        length--;
+        node.next = null;
+        return node;
+    }
 
     public boolean find(int searchKey) {
         Node current = head;
@@ -177,27 +193,17 @@ public class SinglyLinkedList {
     }
 
     public Node getNthNodeFromEnd(int n) {
-        if (n <= 0) {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Empty LinkedList");
+        }
+        if (n <= 0 || this.length < n) {
             throw new IllegalArgumentException("Invalid n: " + n);
         }
-
-        Node mainPtr = head;
-        Node refPtr = head;
-
-        int count = 0;
-        while (count < n) {
-            if (refPtr == null) {
-                throw new IllegalArgumentException("The position " + n + " exceeds the length of SinglyLinkedList");
-            }
-            refPtr = refPtr.next;
-            count++;
+        Node current = head;
+        for(int i = 0; i < this.length - n; i++) {
+            current = current.next;
         }
-
-        while(refPtr != null) {
-            mainPtr = mainPtr.next;
-            refPtr = refPtr.next;
-        }
-        return mainPtr;
+        return current;
     }
 
     public void removeDuplicate() {
@@ -382,21 +388,34 @@ public class SinglyLinkedList {
         System.out.println("Length: " + sll.length());
         System.out.println('\n');
 
-        System.out.println("----------------deleteFirst-----------------------");
-        sll.deleteFirst();
+        System.out.println("----------------removeFirst-----------------------");
+        Node a = sll.removeFirst();
         sll.display();
+//        Node x = sll.removeFirst();
+//        sll.display();
+//        Node y = sll.removeFirst();
+//        sll.display();
+//        Node z = sll.removeFirst();
+//        sll.display();
+//        Node u = sll.removeFirst();
+//        sll.display();
+//        Node v = sll.removeFirst();
+//        sll.display();
+        System.out.println("Remove element: " + a.data);
         System.out.println("Length: " + sll.length());
         System.out.println('\n');
 
-        System.out.println("-----------------deleteLast----------------------");
-        sll.deleteLast();
+        System.out.println("-----------------removeLast----------------------");
+        Node b = sll.removeLast();
         sll.display();
+        System.out.println("Remove element: " + b.data);
         System.out.println("Length: " + sll.length());
         System.out.println('\n');
 
-        System.out.println("-----------------delete any position----------------------");
-        sll.delete(3);
+        System.out.println("-----------------remove element in any position----------------------");
+        Node c = sll.remove(4);
         sll.display();
+        System.out.println("Remove element: " + c.data);
         System.out.println("Length: " + sll.length());
         System.out.println('\n');
 
@@ -407,7 +426,7 @@ public class SinglyLinkedList {
         System.out.println('\n');
 
         System.out.println("----------------nthNodeFromTheEnd-----------------------");
-        int n = 3;
+        int n = 1;
         Node nthNodeFromTheEnd = sll.getNthNodeFromEnd(n);
         sll.display();
         System.out.println("The " + n + "nth element from the end of SinglyLinkedList: " + nthNodeFromTheEnd.data);
