@@ -22,7 +22,7 @@ public class CircularSInglyLinkedList {
         this.last = null;
     }
 
-    public int length() {
+    public int size() {
         return this.length;
     }
 
@@ -129,19 +129,19 @@ public class CircularSInglyLinkedList {
         int[] arr = {1, 2, 3};
         CircularSInglyLinkedList csll = createCircularLinkedList(arr);
         csll.display();
-        System.out.println("The length of DLL is: " + csll.length);
+        System.out.println("The length of DLL is: " + csll.size());
         System.out.println('\n');
 
         System.out.println("----------------insertFirst-----------------------");
         csll.insertFirst(10);
         csll.display();
-        System.out.println("The length of DLL is: " + csll.length);
+        System.out.println("The length of DLL is: " + csll.size());
         System.out.println('\n');
 
         System.out.println("----------------insertLast-----------------------");
         csll.insertLast(100);
         csll.display();
-        System.out.println("The length of DLL is: " + csll.length);
+        System.out.println("The length of DLL is: " + csll.size());
         System.out.println('\n');
 
         System.out.println("----------------removeFirst-----------------------");
@@ -149,14 +149,14 @@ public class CircularSInglyLinkedList {
         Node b = csll.removeFirst();
         csll.display();
         System.out.println("The elements are already remove: " + a.data + ", " + b.data);
-        System.out.println("The length of DLL is: " + csll.length);
+        System.out.println("The length of DLL is: " + csll.size());
         System.out.println('\n');
 
         System.out.println("----------------removeLast-----------------------");
         Node c = csll.removeLast();
         csll.display();
         System.out.println("The elements are already remove: " + c.data);
-        System.out.println("The length of DLL is: " + csll.length);
+        System.out.println("The length of DLL is: " + csll.size());
         System.out.println('\n');
 
 //        csll.removeFirst();
@@ -164,7 +164,7 @@ public class CircularSInglyLinkedList {
 //        csll.removeFirst();
 //        csll.display();
 //        csll.removeFirst();
-//        System.out.println("The length of DLL is: " + csll.length);
+//        System.out.println("The length of DLL is: " + csll.size());
 //        System.out.println('\n');
 
         // Insert again
