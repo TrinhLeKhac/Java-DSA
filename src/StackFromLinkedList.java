@@ -3,9 +3,8 @@
 // Therefore it is called as Last In First Out (LIFO) list
 
 import java.util.EmptyStackException;
-import java.util.NoSuchElementException;
 
-public class StackImplement {
+public class StackFromLinkedList {
     private int length;
     private Node top;
 
@@ -18,7 +17,7 @@ public class StackImplement {
         }
     }
 
-    public StackImplement() {
+    public StackFromLinkedList() {
         this.length = 0;
         this.top = null;
     }
@@ -71,7 +70,7 @@ public class StackImplement {
     public static void main(String[] args) {
 
         System.out.println("----------------push-----------------------");
-        StackImplement stack = new StackImplement();
+        StackFromLinkedList stack = new StackFromLinkedList();
         stack.push(1);
         stack.push(2);
         stack.push(3);
