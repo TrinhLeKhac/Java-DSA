@@ -14,22 +14,30 @@ public class SpiralPrint {
     public static void spiralPrint(int[][] matrix, int r, int c) {
         int i,  k = 0, l = 0;
         while (k < r && l < c) {
+
             for (i = l; i < c; i++) {
                 System.out.print(matrix[k][i] + " ");
             }
             k++;
+
             for (i = k; i < r; i++) {
                 System.out.print(matrix[i][c-1] + " ");
             }
             c--;
-            for (i = c-1; i >= l; i--) {
-                System.out.print(matrix[r-1][i] + " ");
+
+            if (k < r) {
+                for (i = c-1; i >= l; i--) {
+                    System.out.print(matrix[r-1][i] + " ");
+                }
+                r--;
             }
-            r--;
-            for (i = r-1; i >= k; i--) {
-                System.out.print(matrix[i][l] + " ");
+
+            if (l < c) {
+                for (i = r-1; i >= k; i--) {
+                    System.out.print(matrix[i][l] + " ");
+                }
+                l++;
             }
-            l++;
         }
     }
 
@@ -42,6 +50,12 @@ public class SpiralPrint {
                 {25, 26, 27, 28, 29, 30},
                 {31, 32, 33, 34, 35, 36},
         };
-        spiralPrint(matrix, matrix.length, matrix.length);
+//        int[][] matrix = {
+//            {1},{2}
+//        };
+//        int[][] matrix = {
+//            {1, 2}
+//        };
+        spiralPrint(matrix, matrix.length, matrix[0].length);
     }
 }
