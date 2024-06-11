@@ -31,8 +31,11 @@ public class ImplementTree {
     // Visit the root node
     // Traverse the left subtree in Preorder fashion
     // Traverse the right subtree in Preorder fashion
+    public void preOrder() {
+        preOrder(root);
+    }
 
-    public void preOrder(TreeNode node) {
+    private void preOrder(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -41,7 +44,10 @@ public class ImplementTree {
         preOrder(node.right);
     }
 
-    public void preOrderUsingStack(TreeNode node) {
+    public void preOrderUsingStack() {
+        preOrderUsingStack(root);
+    }
+    private void preOrderUsingStack(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -64,7 +70,11 @@ public class ImplementTree {
     // Visit the root node
     // Traverse the right subtree in Inorder Fashion
 
-    public void inOrder(TreeNode node) {
+    public void inOrder() {
+        inOrder(root);
+    }
+
+    private void inOrder(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -73,7 +83,11 @@ public class ImplementTree {
         inOrder(node.right);
     }
 
-    public void inOrderUsingStack(TreeNode node) {
+    public void inOrderUsingStack() {
+        inOrderUsingStack(root);
+    }
+
+    private void inOrderUsingStack(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -97,7 +111,11 @@ public class ImplementTree {
     // Traverse the right subtree in PostOrder fashion
     // Traverse the left subtree in PostOrder fashion
 
-    public void postOrder(TreeNode node) {
+    public void postOrder() {
+        postOrder(root);
+    }
+
+    private void postOrder(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -106,7 +124,11 @@ public class ImplementTree {
         postOrder(node.left);
     }
 
-    public void postOrderUsingStack(TreeNode node) {
+    public void postOrderUsingStack() {
+        postOrderUsingStack(root);
+    }
+
+    private void postOrderUsingStack(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -124,7 +146,11 @@ public class ImplementTree {
         }
     }
 
-    public void levelOrder(TreeNode node) {
+    public void levelOrder() {
+        levelOrder(root);
+    }
+
+    private void levelOrder(TreeNode node) {
         if (node == null) {
             return;
         }
@@ -143,7 +169,11 @@ public class ImplementTree {
         }
     }
 
-    public int findMax(TreeNode node) {
+    public int findMax() {
+        return findMax(root);
+    }
+
+    private int findMax(TreeNode node) {
         if (node == null) {
             return Integer.MIN_VALUE;
         }
@@ -182,20 +212,20 @@ public class ImplementTree {
         tree.createBinaryTree();
         System.out.println("-----------------preOrder traversal----------------------");
         System.out.println("Preorder traversal of binary tree:");
-        tree.preOrder(tree.getRoot());
+        tree.preOrder();
         System.out.println('\n');
 
         System.out.println("Preorder traversal of binary tree by using stack:");
-        tree.preOrderUsingStack(tree.getRoot());
+        tree.preOrderUsingStack();
         System.out.println('\n');
 
         System.out.println("-----------------inOrder traversal----------------------");
         System.out.println("inOrder traversal of binary tree:");
-        tree.inOrder(tree.getRoot());
+        tree.inOrder();
         System.out.println('\n');
 
         System.out.println("inOrder traversal of binary tree by using stack:");
-        tree.inOrderUsingStack(tree.getRoot());
+        tree.inOrderUsingStack();
         System.out.println('\n');
 
         System.out.println("-----------------postOrder traversal----------------------");
@@ -204,14 +234,14 @@ public class ImplementTree {
         System.out.println('\n');
 
         System.out.println("postOrder traversal of binary tree by using stack:");
-        tree.postOrderUsingStack(tree.getRoot());
+        tree.postOrderUsingStack();
         System.out.println('\n');
 
         System.out.println("-----------------levelOrder----------------------");
-        tree.levelOrder(tree.getRoot());
+        tree.levelOrder();
         System.out.println('\n');
 
         System.out.println("-----------------findMax----------------------");
-        System.out.println("The maximum value of tree: " + tree.findMax(tree.getRoot()));
+        System.out.println("The maximum value of tree: " + tree.findMax());
     }
 }
