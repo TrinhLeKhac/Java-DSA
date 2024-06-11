@@ -189,6 +189,24 @@ public class ImplementTree {
         return result;
     }
 
+    // Given the root of a binary tree, determine if it is a valid binary search tree (BST)
+    public boolean isValidBST(long min, long max) {
+        return isValidBST(root, min, max);
+    }
+
+    private static boolean isValidBST(TreeNode node, long min, long max) {
+        if (node == null) {
+            return true;
+        }
+        if (node.data <= min || node.data >= max) {
+            return false;
+        }
+        boolean left = isValidBST(node.left, min, node.data);
+
+        return left && isValidBST(node.right, node.data, max);
+    }
+
+    // Create binaryTree
     public void createBinaryTree() {
         TreeNode first = new TreeNode(1);
         TreeNode second = new TreeNode(2);
@@ -243,5 +261,12 @@ public class ImplementTree {
 
         System.out.println("-----------------findMax----------------------");
         System.out.println("The maximum value of tree: " + tree.findMax());
+
+        System.out.println("-----------------check if binaryTree is a binarySearchTree----------------------");
+        if (tree.isValidBST(Integer.MIN_VALUE, Integer.MAX_VALUE)) {
+            System.out.println("The tree is a binary search tree (BST)");
+        } else {
+            System.out.println("The tree is not a binary search tree (BST)");
+        }
     }
 }
