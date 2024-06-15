@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ad1f27c2-5780-4cc7-894a-8088d85a4724" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -7,12 +10,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2ha6PrC3iCivphTpe33mPaFuwAZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -21,12 +31,101 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BinaryNumberUsingQueue.executor": "Run",
+    "Application.BinarySearch.executor": "Run",
+    "Application.BinarySearchTree.executor": "Run",
+    "Application.BubbleSort.executor": "Run",
+    "Application.CircularSInglyLinkedList.executor": "Run",
+    "Application.DoublyLinkedList.executor": "Run",
+    "Application.DutchNationalFlagProblem.executor": "Run",
+    "Application.FindMissingValue.executor": "Run",
+    "Application.FindSecondMax.executor": "Run",
+    "Application.FindTheNextGreaterElement.executor": "Run",
+    "Application.GenerateBinaryNumber.executor": "Run",
+    "Application.ImplementTree.executor": "Run",
+    "Application.InsertionSort.executor": "Run",
+    "Application.MaxPriorityQueue.executor": "Run",
+    "Application.MergeSort.executor": "Run",
+    "Application.MergeSortV2.executor": "Run",
+    "Application.MergeTwoSortedArray.executor": "Run",
+    "Application.MoveZeroElement.executor": "Run",
+    "Application.MoveZeroToEnd.executor": "Run",
+    "Application.Palindrome.executor": "Run",
+    "Application.Parentheses.executor": "Run",
+    "Application.QueueFromLinkedList.executor": "Run",
+    "Application.QuickSort.executor": "Run",
+    "Application.RemoveOddInteger.executor": "Run",
+    "Application.ResizeArray.executor": "Run",
+    "Application.ReverseArray.executor": "Run",
+    "Application.ReverseString.executor": "Run",
+    "Application.SearchInSortedMatrix.executor": "Run",
+    "Application.SelectionSort.executor": "Run",
+    "Application.SinglyLinkedList.executor": "Run",
+    "Application.SortedMatrix.executor": "Run",
+    "Application.SortedSquare.executor": "Run",
+    "Application.SpiralPrint.executor": "Run",
+    "Application.StackFromArray.executor": "Run",
+    "Application.StackImplement.executor": "Run",
+    "Application.findMissingValue.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true"
   }
 }]]></component>
+  <component name="RunManager" selected="Application.BinarySearch">
+    <configuration name="BinarySearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="search.BinarySearch" />
+      <module name="Java-DSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InsertionSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sort.InsertionSort" />
+      <module name="Java-DSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeSortV2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sort.MergeSortV2" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="array.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuickSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sort.QuickSort" />
+      <module name="Java-DSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SelectionSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sort.SelectionSort" />
+      <module name="Java-DSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BinarySearch" />
+        <item itemvalue="Application.MergeSortV2" />
+        <item itemvalue="Application.InsertionSort" />
+        <item itemvalue="Application.SelectionSort" />
+        <item itemvalue="Application.QuickSort" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
