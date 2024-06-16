@@ -3,7 +3,7 @@
 
 package array;
 
-public class SortedSquare {
+public class TwoPointerTechnique1 {
 
     public static int[] sortedSquare(int[] arr) {
 
