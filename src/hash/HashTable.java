@@ -40,8 +40,8 @@ package hash;
 import java.util.NoSuchElementException;
 
 public class HashTable {
-    private HashNode[] buckets;
-    private int numOfBuckets;  // capacity
+    private final HashNode[] buckets;
+    private final int numOfBuckets;  // capacity
     private int size;  // number of key value pairs in hash table or number of hash nodes
 
     public HashTable() {
@@ -62,32 +62,93 @@ public class HashTable {
         return size == 0;
     }
 
+    public int getBucketIndex(Integer key) {
+        return key % this.numOfBuckets; // bucket.length
+    }
+
     public void put(Integer key, String value) {
-        if (size == numOfBuckets) {
-            throw new StackOverflowError("Exceed the capacity of buckets");
+        if (key == null || value == null) {
+            throw new IllegalArgumentException("Key or value is null!!!");
         }
-        this.buckets[size] = new HashNode(key, value);
+        int bucketIndex = getBucketIndex(key);
+        HashNode current = this.buckets[bucketIndex];
+        while (current != null) {
+            if (current.key.equals(key)) { // if key in hashtable
+                current.value = value;  // update value and return
+                return;
+            }
+            current = current.next;
+        }
         size++;
+        current = this.buckets[bucketIndex];
+        HashNode node = new HashNode(key, value);  // (key, value) -> null
+        node.next = current;
+        this.buckets[bucketIndex] = node;
     }
 
     public String get(Integer key) {
-        for (int i = 0; i < size; i++) {
-            if (this.buckets[i].key.equals(key)) {
-                return this.buckets[i].value;
-            }
+        if (key == null) {
+            throw new IllegalArgumentException("Key is null!!!");
         }
-        throw new NoSuchElementException("Buckets has no key: " + key);
+        int bucketIndex = getBucketIndex(key);
+        HashNode current = this.buckets[bucketIndex];
+        while (current != null) {
+            if (current.key.equals(key)) {
+                return current.value;
+            }
+            current = current.next;
+        }
+        return null;
     }
 
-    public String remove(Integer key) {
-        for (int i = 0; i < size; i++) {
-            if (this.buckets[i].key.equals(key)) {
-                this.buckets[i].next = null;
-                size--;
-                return this.buckets[i].value;
-            }
+    public String remove1(Integer key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key is null!!!");
         }
-        throw new NoSuchElementException("Buckets has no key: " + key);
+        int bucketIndex = getBucketIndex(key);
+        HashNode current = this.buckets[bucketIndex];
+        if (current.key.equals(key)) {
+            this.buckets[bucketIndex] = current.next;
+            return current.value;
+        }
+        HashNode previous = current;
+        current = current.next;
+        while (current != null) {
+            if (current.key.equals(key)) {
+                previous.next = current.next;
+                return current.value;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return null;
+    }
+
+    public String remove2(Integer key) {
+        if (key == null) {
+            throw new IllegalArgumentException("Key is null!!!");
+        }
+        int bucketIndex = getBucketIndex(key);
+        HashNode previous = null;
+        HashNode current = this.buckets[bucketIndex];
+
+        while (current != null) {
+            if (current.key.equals(key)) {
+                break;
+            }
+            previous = current;
+            current = current.next;
+        }
+        if (current == null) {
+            return null;
+        }
+        size--;
+        if (previous != null) {
+            previous.next = current.next;
+        } else {
+            this.buckets[bucketIndex] = current.next;
+        }
+        return current.value;
     }
 
     private static class HashNode {
@@ -104,5 +165,28 @@ public class HashTable {
     }
     public static void main(String[] args) {
         HashTable table = new HashTable(10);
+        System.out.println("----------------Put element into HashTable and check size-----------------------");
+        table.put(105, "Tom");
+        table.put(21, "Sana");
+        table.put(21, "Harry");
+        table.put(11, "Beez");
+        table.put(1, "Beo");
+        System.out.println("Size of hash table: " + table.size());
+        System.out.println("----------------Get value from key in HashTable-----------------------");
+        System.out.println(table.get(105));
+        System.out.println(table.get(41));
+        System.out.println("----------------Remove key from HashTable-----------------------");
+
+        int key1 = 21;
+        String removeVal1 = table.remove2(key1);
+        System.out.println("Value from remove key: " + key1 + " is: " + removeVal1);
+
+        int key2 = 11;
+        String removeVal2 = table.remove2(key2);
+        System.out.println("Value from remove key: " + key2 + " is: " + removeVal2);
+
+        int key3 = 1;
+        String removeVal3 = table.remove2(key3);
+        System.out.println("Value from remove key: " + key3 + " is: " + removeVal3);
     }
 }
