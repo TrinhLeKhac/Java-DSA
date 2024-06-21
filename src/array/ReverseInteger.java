@@ -14,9 +14,10 @@ public class ReverseInteger {
             number = number * (-1);
         }
         int reverse = 0;
+        int lastDigit;
         while (number > 0) {
-            int remain = number % 10;
-            reverse = reverse * 10 + remain;
+            lastDigit = number % 10;
+            reverse = reverse * 10 + lastDigit;
             number = number / 10;
         }
         return isNegative ? reverse * (-1) : reverse;
