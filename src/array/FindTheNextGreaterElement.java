@@ -15,9 +15,9 @@ public class FindTheNextGreaterElement {
                 stack.pop();
             }
             if(stack.isEmpty()) {
-                 result[i] = -1;
+                result[i] = -1;
             } else {
-                 result[i] = stack.peek();
+                result[i] = stack.peek();
             }
             stack.push(arr[i]);
         }
