@@ -1,4 +1,4 @@
-package demo;
+package FAQ;
 
 import java.util.*;
 
@@ -149,7 +149,11 @@ public class StringFAQ {
         MyString (String data) {
             this.value = data.toCharArray();
         }
-        public String concat(String strConcat) {
+
+        public String getValue() {
+            return new String(this.value);
+        }
+        public String myConcat(String strConcat) {
             if (strConcat.isEmpty()) {
                 return new String(this.value);
             }
@@ -160,17 +164,18 @@ public class StringFAQ {
             return new String(buf);
         }
 
-        public boolean equals(Object anObject) {
+        public boolean myEquals(Object anObject) {
             if (this == anObject) {  // reference
                 return true;
             }
+            char[] val = this.value;    /* avoid getfield opcode */
             if (anObject instanceof String anotherString) {  // instanceof can cast
-                int n = this.value.length;
+                int n = val.length;
                 if (anotherString.length() == n) {
                     char[] v2 = anotherString.toCharArray();
                     int i = 0;
                     while (i < n) {
-                        if (this.value[i] != v2[i]) {
+                        if (val[i] != v2[i]) {
                             return false;
                         }
                         i++;
@@ -181,7 +186,7 @@ public class StringFAQ {
             return false;
         }
 
-        public static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements) {
+        public static String myJoin(CharSequence delimiter, Iterable<? extends CharSequence> elements) {
             Iterator<? extends CharSequence> it = elements.iterator();
             StringBuilder result = new StringBuilder();
             if (it.hasNext()) {
@@ -193,12 +198,98 @@ public class StringFAQ {
             return result.toString();
         }
 
-        public static String joinV2(CharSequence delimiter, Iterable<? extends CharSequence> elements) {
+        public static String myJoinV2(CharSequence delimiter, Iterable<? extends CharSequence> elements) {
             StringJoiner sj = new StringJoiner(delimiter);
             for (CharSequence c: elements) {
                 sj.add(c);
             }
             return sj.toString();
+        }
+
+        public String myReplaceNaive(char oldChar, char newChar) {
+            char[] val = this.value;    /* avoid getfield opcode */
+            int len = val.length;
+            if (oldChar != newChar) {
+                int i = 0;
+                while (i < len) {
+                    if (val[i] != oldChar) {
+                        i++;
+                    } else {
+                        break;
+                    }
+                }
+                if (i < len) {
+                    char[] buf = new char[len];
+                    for (int j = 0; j < i; j++) {
+                        buf[j] = val[j];
+                    }
+                    while (i < len) {
+                        buf[i] = (val[i] == oldChar) ? newChar: val[i];
+                        i++;
+                    }
+                    return new String(buf);
+                }
+                return new String(val);
+            }
+            return new String(this.value);
+        }
+
+        public String myReplace(char oldChar, char newChar) {
+            char[] val = this.value;    /* avoid getfield opcode */
+            if (oldChar != newChar) {
+                int i = 0;
+                int len = val.length;
+                while (i < len) { // using while (i++ < len) => OK
+                    if (val[i] == oldChar) {
+                        break;
+                    }
+                    i++;
+                }
+                if (i < len) {
+                    char[] buf = new char[len];
+                    System.arraycopy(val, 0, buf, 0, i);
+                    while (i < len) {  // using while (i++ < len) => ERROR
+                        buf[i] = (val[i] == oldChar) ? newChar: val[i];
+                        i++;
+                    }
+                    return new String(buf);
+                }
+            }
+            return new String(val);
+        }
+
+        public boolean myStartsWith(String prefix, int offset) {
+            char[] ta = this.value;  // this array
+            int to = offset;   // this offset
+            char[] pa = prefix.toCharArray(); // prefix array
+            int po = 0;  // prefix offset
+            int pc = prefix.length(); // prefix count
+            if (to < 0 || to > ta.length - pc) {
+                return false;
+            }
+            while (--pc >= 0) {
+                if (ta[to++] != pa[po++]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public boolean myStartsWith(String prefix) {
+            return myStartsWith(prefix, 0);
+        }
+
+        public String myTrim() {
+            char[] val = this.value;  /* avoid getfield opcode */
+            int len = val.length;
+            int st = 0; // start
+            while ((st < len) && (val[st] <= ' ')) {  // leading space
+                st++;
+            }
+            while ((st < len) && (val[len-1] <= ' ')) {   // trailing space
+                len--;
+            }
+        return ((st > 0) || (len < val.length)) ? new String(val).substring(st, len): new String(val);
         }
     }
 
@@ -277,27 +368,63 @@ public class StringFAQ {
         System.out.println('\n');
 
         System.out.println("----------------Q11. Re-implement concatenate method-----------------------");
-        MyString myString = new MyString("Le Khac");
-        String output = myString.concat(" Trinh");
+        MyString myStringV1 = new MyString("Re-implement");
+        String output = myStringV1.myConcat("concatenate method");
         System.out.println("The modified string is: " + output);
         System.out.println('\n');
 
         System.out.println("----------------Q12. Re-implement equals method-----------------------");
+        MyString myStringV2 = new MyString("Le Khac Trinh");
         String target = "Le Khac Trinh";
-        boolean check = output.equals(target);
-        if (check) {
-            System.out.println("The two object " + output + " and " + target + " equals.");
+        boolean checkV1 = myStringV2.myEquals(target);
+        if (checkV1) {
+            System.out.println("The two object " + myStringV2.getValue() + " and " + target + " equals.");
         } else {
-            System.out.println("The two objects " + output + " and " + target + " NOT equals");
+            System.out.println("The two objects " + myStringV2.getValue() + " and " + target + " NOT equals");
         }
         System.out.println('\n');
 
         System.out.println("----------------Q13. Re-implement join method-----------------------");
-        String result = MyString.join("/",List.of("25","06","2024"));
-        System.out.print(result);
+        String date = MyString.myJoin("/",List.of("25","06","2024"));
+        System.out.print(date);
 
-        String result2 = MyString.joinV2(":", List.of("21","10","10"));
-        System.out.print(" " + result2);
+        String time = MyString.myJoinV2(":", List.of("21","10","10"));
+        System.out.print(" " + time);
+        System.out.println('\n');
+
+        System.out.println("----------------Q14. Re-implement replace method-----------------------");
+        MyString myStringV3 = new MyString("Re-implement replace method");
+        String resultV1 = myStringV3.myReplaceNaive('R', 'r');
+        String resultV2 = myStringV3.myReplace('R', 'r');
+        System.out.println("The string after modification by method V1 is: " + resultV1);
+        System.out.println("The string after modification by method V2 is: " + resultV2);
+        System.out.println('\n');
+
+        System.out.println("----------------Q15. Re-implement startWith method-----------------------");
+        MyString myStringV4 = new MyString("Re-implement startWith method");
+        String startWithStringV1 = "Re--";
+        String startWithStringV2 = "implement-";
+        int offset = 3;
+
+        boolean checkV2 = myStringV4.myStartsWith(startWithStringV1);  // offset = 0
+        boolean checkV3 = myStringV4.myStartsWith(startWithStringV2, offset);
+        if (checkV2) {
+            System.out.println("The original string is startsWith " + startWithStringV1 + " at beginning.");
+        } else {
+            System.out.println("The original string is NOT startsWith " + startWithStringV1 + " at beginning.");
+        }
+        if (checkV3) {
+            System.out.println("The original string is startsWith " + startWithStringV2 + " at offset " + offset);
+        } else {
+            System.out.println("The original string is NOT startsWith " + startWithStringV2 + " at offset " + offset);
+        }
+        System.out.println('\n');
+
+        System.out.println("----------------Q16. Re-implement trim method-----------------------");
+        MyString myStringV5 = new MyString("  hello world      ");
+        String trimmedString = myStringV5.myTrim();
+        System.out.println("The modified string after trimming is: " + trimmedString);
+        System.out.println('\n');
     }
 }
 
