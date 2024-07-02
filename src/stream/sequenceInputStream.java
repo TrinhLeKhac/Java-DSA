@@ -21,7 +21,7 @@ public class sequenceInputStream {
         fin2.close();
         sin.close();
         fout.close();
-        System.out.println("Finished demo 1");
+        System.out.println("Success...");
     }
 
     public static void secondDemo() throws IOException {
@@ -51,6 +51,7 @@ public class sequenceInputStream {
         fin4.close();
         fout.close();
         sin.close();
+        System.out.println("Success...");
     }
 
     public static void thirdDemo() throws IOException {
@@ -60,7 +61,7 @@ public class sequenceInputStream {
                 FileInputStream fin2 = new FileInputStream("src/stream/input2.txt");
                 FileInputStream fin3 = new FileInputStream("src/stream/input3.txt");
                 FileInputStream fin4 = new FileInputStream("src/stream/input4.txt");
-                FileOutputStream fout = new FileOutputStream("src/stream/outputSecondDemo.txt");
+                FileOutputStream fout = new FileOutputStream("src/stream/outputThirdDemo.txt");
 
                 // Using enumerate from Vector.elements when read sequenceInputStream from more than 2 files
                 SequenceInputStream sin = new SequenceInputStream(new Vector<>(Arrays.asList(fin1, fin2, fin3, fin4)).elements())
@@ -71,11 +72,39 @@ public class sequenceInputStream {
                 fout.write(j);
             }
         } // automatically close in there
+        System.out.println("Success...");
+    }
+
+    public static void fourthDemo() throws IOException {
+        // try-with-resources
+        try (
+                FileOutputStream fout1 = new FileOutputStream("src/stream/outputFourthDemo1.txt");
+                FileOutputStream fout2 = new FileOutputStream("src/stream/outputFourthDemo2.txt");
+                ByteArrayOutputStream bout = new ByteArrayOutputStream(); // buffer
+                ) {
+            bout.write(65);
+            bout.writeTo(fout1);
+            bout.writeTo(fout2);
+            bout.flush();
+            System.out.println("Success...");
+        }
     }
 
     public static void main(String[] args) throws IOException {
+        System.out.println("-----------------firstDemo----------------------");
         firstDemo();
+        System.out.println('\n');
+
+        System.out.println("-----------------secondeDemo----------------------");
         secondDemo();
+        System.out.println('\n');
+
+        System.out.println("-----------------thirdDemo----------------------");
         thirdDemo();
+        System.out.println('\n');
+
+        System.out.println("-----------------fourthDemo----------------------");
+        fourthDemo();
+        System.out.println('\n');
     }
 }
