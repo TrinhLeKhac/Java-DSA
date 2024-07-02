@@ -1,3 +1,5 @@
+package thread;
+
 public class demoThread {
 
     private static class Customer {
