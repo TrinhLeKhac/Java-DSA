@@ -10,6 +10,12 @@ package stream;
 
 // An ObjectInputStream deserializes objects and primitive data written using an ObjectOutputStream
 
+// If there is any static data member in a class, it will not be serialized because static is the part of class not object.
+// In case of array or collection, all the objects of array or collection must be serializable.
+// If any object is not serializable, serialization will be failed.
+
+// If you don't want to serialize any data member of a class, you can mark it as transient
+
 import java.io.*;
 
 class Person implements Serializable {
