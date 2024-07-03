@@ -1,7 +1,10 @@
 package stream;
 
-// Serializable is a marker interface (has no data member and method).
-// It is used to "mark" Java classes so that the objects of these classes may get a certain capability
+// Serialization is used to convert an object into a stream of the byte.
+// The byte stream consists of the data of the instance as well as the type of data stored in that instance.
+// Deserialization performs exactly opposite operation. It converts the byte sequence into original object data
+
+// Serializable is a marker interface (has no data member and method). It is used to "mark" Java classes
 // The Serializable interface must be implemented by the class whose object needs to be persisted.
 // The String class and all the wrapper classes implement the java.io.Serializable interface by default.
 
