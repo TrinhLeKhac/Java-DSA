@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ad1f27c2-5780-4cc7-894a-8088d85a4724" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hash/HashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hash/HashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/stream/Serialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/stream/Serialization.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,111 +32,102 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BinaryNumberUsingQueue.executor": "Run",
-    "Application.BinarySearch.executor": "Run",
-    "Application.BinarySearchTree.executor": "Run",
-    "Application.BubbleSort.executor": "Run",
-    "Application.CircularSInglyLinkedList.executor": "Run",
-    "Application.DoublyLinkedList.executor": "Run",
-    "Application.DutchNationalFlagProblem.executor": "Run",
-    "Application.FindIsland.executor": "Run",
-    "Application.FindMissingValue.executor": "Run",
-    "Application.FindSecondMax.executor": "Run",
-    "Application.FindTheNextGreaterElement.executor": "Run",
-    "Application.GenerateBinaryNumber.executor": "Run",
-    "Application.Graph.executor": "Run",
-    "Application.GraphByLinkedlist.executor": "Run",
-    "Application.HashTable.executor": "Run",
-    "Application.ImplementTree.executor": "Run",
-    "Application.InsertionSort.executor": "Run",
-    "Application.MaxPriorityQueue.executor": "Run",
-    "Application.MergeSort.executor": "Run",
-    "Application.MergeSortV2.executor": "Run",
-    "Application.MergeTwoSortedArray.executor": "Run",
-    "Application.MoveZeroElement.executor": "Run",
-    "Application.MoveZeroToEnd.executor": "Run",
-    "Application.Palindrome.executor": "Run",
-    "Application.Parentheses.executor": "Run",
-    "Application.QueueFromLinkedList.executor": "Run",
-    "Application.QuickSort.executor": "Run",
-    "Application.RemoveOddInteger.executor": "Run",
-    "Application.ResizeArray.executor": "Run",
-    "Application.ReverseArray.executor": "Run",
-    "Application.ReverseString.executor": "Run",
-    "Application.SearchInSortedMatrix.executor": "Run",
-    "Application.SelectionSort.executor": "Run",
-    "Application.SinglyLinkedList.executor": "Run",
-    "Application.SortedMatrix.executor": "Run",
-    "Application.SortedSquare.executor": "Run",
-    "Application.SpiralPrint.executor": "Run",
-    "Application.StackFromArray.executor": "Run",
-    "Application.StackImplement.executor": "Run",
-    "Application.TwoPointerTechnique2.executor": "Run",
-    "Application.findMissingValue.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BinaryNumberUsingQueue.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BinarySearch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BinarySearchTree.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BubbleSort.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CheckDuplicate.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CircularSInglyLinkedList.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DoublyLinkedList.executor&quot;: &quot;Run&quot;,
+    &quot;Application.DutchNationalFlagProblem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Dynamic.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FindIsland.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FindMissingValue.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FindSecondMax.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FindTheNextGreaterElement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.FirstNonRepeatingCharacter.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GenerateBinaryNumber.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Graph.executor&quot;: &quot;Run&quot;,
+    &quot;Application.GraphByLinkedlist.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HashTable.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ImplementTree.executor&quot;: &quot;Run&quot;,
+    &quot;Application.InsertionSort.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Intervals.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LongestSubString.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MaxPriorityQueue.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MaxSlidingWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MaximumSlidingWindow.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MaximumSubArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MergeSort.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MergeSortV2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MergeTwoSortedArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MoveZeroElement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MoveZeroToEnd.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MyString.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Palindrome.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Parentheses.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ProductSolution.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QueueFromLinkedList.executor&quot;: &quot;Run&quot;,
+    &quot;Application.QuickSort.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RemoveElement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RemoveOddInteger.executor&quot;: &quot;Run&quot;,
+    &quot;Application.RemoveVowels.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ResizeArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReverseArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReverseInteger.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReverseString.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SearchInSortedMatrix.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SelectionSort.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Serialization.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SinglyLinkedList.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SortedMatrix.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SortedSquare.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SpiralPrint.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackFromArray.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StackImplement.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ (4).executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ (5).executor&quot;: &quot;Run&quot;,
+    &quot;Application.StringFAQ.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SubSequence.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ThreeSumProblem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Trie.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TwoPointerTechnique2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TwoSum.executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoIO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread (1).executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread (2).executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread (3).executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread (4).executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread (5).executor&quot;: &quot;Run&quot;,
+    &quot;Application.demoThread.executor&quot;: &quot;Run&quot;,
+    &quot;Application.findMissingValue.executor&quot;: &quot;Run&quot;,
+    &quot;Application.hashCode.executor&quot;: &quot;Run&quot;,
+    &quot;Application.sequenceInputStream.executor&quot;: &quot;Run&quot;,
+    &quot;Application.thread.demoThread.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/trinhlk2/Desktop/Java/Java-DSA/src/stream&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.HashTable">
-    <configuration name="FindIsland" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graph.FindIsland" />
-      <module name="Java-DSA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphByArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graph.GraphByArray" />
-      <module name="Java-DSA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphByLinkedlist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="graph.GraphByLinkedlist" />
-      <module name="Java-DSA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HashTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hash.HashTable" />
-      <module name="Java-DSA" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hash.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TwoPointerTechnique2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="array.TwoPointerTechnique2" />
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/stream" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/stream" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CheckDuplicate">
+    <configuration name="CheckDuplicate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="array.CheckDuplicate" />
       <module name="Java-DSA" />
       <extension name="coverage">
         <pattern>
@@ -148,13 +139,85 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Serialization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.Serialization" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="stream.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringFAQ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FAQ.StringFAQ" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FAQ.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StringFAQ" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FAQ.StringFAQ" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FAQ.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="demoIO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="demoIO" />
+      <module name="Java-DSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sequenceInputStream" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="stream.sequenceInputStream" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="stream.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="thread.demoThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="thread.demoThread" />
+      <module name="Java-DSA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="thread.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HashTable" />
-        <item itemvalue="Application.FindIsland" />
-        <item itemvalue="Application.GraphByLinkedlist" />
-        <item itemvalue="Application.GraphByArray" />
-        <item itemvalue="Application.TwoPointerTechnique2" />
+        <item itemvalue="Application.CheckDuplicate" />
+        <item itemvalue="Application.Serialization" />
+        <item itemvalue="Application.sequenceInputStream" />
+        <item itemvalue="Application.thread.demoThread" />
+        <item itemvalue="Application.demoIO" />
       </list>
     </recent_temporary>
   </component>
